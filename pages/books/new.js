@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { Context } from "../../context";
 import { useForm } from "react-hook-form";
 
 // Mui
@@ -9,11 +11,10 @@ import Grid from "@mui/material/Grid";
 // Components
 import { Button, Container, Input, RatingStar } from "../../components";
 
-// Hooks
-import useCeramic from "../../hooks/useCeramic";
-
 export default function New() {
-  const { loading, ceramic, errorMessage } = useCeramic();
+  const {
+    state: { loading, ceramic, error },
+  } = useContext(Context);
 
   const { control, handleSubmit, watch, setValue, clearErrors } = useForm({
     defaultValues: {
@@ -21,6 +22,8 @@ export default function New() {
       rating: null,
     },
   });
+
+  console.log(ceramic.did.authenticated);
 
   const ratingValue = watch("rating");
   const handleRatingChange = (rate) => {
@@ -64,10 +67,10 @@ export default function New() {
                 + Add Book
               </Button>
             </Grid>
-            {errorMessage && (
+            {error && (
               <Grid item xs={12} mt={2}>
                 <Typography variant="caption" color="error">
-                  Error: {errorMessage}
+                  Error: {error.message}
                 </Typography>
               </Grid>
             )}

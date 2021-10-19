@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { NavBar, Footer } from "../components";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import theme from "../theme";
+import { Provider } from "../context";
 
 export default function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -13,11 +14,13 @@ export default function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <NavBar />
-      <Component {...pageProps} />
-      <Footer />
-    </ThemeProvider>
+    <Provider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <NavBar />
+        <Component {...pageProps} />
+        <Footer />
+      </ThemeProvider>
+    </Provider>
   );
 }

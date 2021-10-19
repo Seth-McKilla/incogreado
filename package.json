@@ -14,6 +14,7 @@
     "@ceramicnetwork/http-client": "^1.4.0",
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
+    "@glazed/datamodel": "^0.1.2",
     "@mui/icons-material": "^5.0.4",
     "@mui/material": "^5.0.4",
     "dids": "^2.4.0",
@@ -27,6 +28,7 @@
     "react-simple-star-rating": "^3.0.0"
   },
   "devDependencies": {
+    "@glazed/devtools": "^0.1.3",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2"
   }
