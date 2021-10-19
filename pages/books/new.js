@@ -20,10 +20,9 @@ export default function New() {
     defaultValues: {
       title: "",
       rating: null,
+      review: "",
     },
   });
-
-  console.log(ceramic.did.authenticated);
 
   const ratingValue = watch("rating");
   const handleRatingChange = (rate) => {

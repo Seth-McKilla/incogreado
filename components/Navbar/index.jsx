@@ -39,7 +39,12 @@ export default function NavBar() {
           <Box sx={{ flexGrow: 1 }}>
             <Link href="/" passHref>
               <IconButton>
-                <Image src={LogoInverted} width={40} height={40} />
+                <Image
+                  src={LogoInverted}
+                  width={40}
+                  height={40}
+                  alt="Incogreado logo"
+                />
               </IconButton>
             </Link>
           </Box>
@@ -51,7 +56,12 @@ export default function NavBar() {
           </Link>
           {state.ceramic && state.ceramic.did.authenticated ? (
             <IconButton>
-              <Image src={MetaMaskIcon} width={35} height={35} />
+              <Image
+                src={MetaMaskIcon}
+                width={35}
+                height={35}
+                alt="MetaMask Icon"
+              />
             </IconButton>
           ) : (
             <Button color="inherit" onClick={handleConnect}>
