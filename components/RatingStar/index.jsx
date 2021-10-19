@@ -1,6 +1,7 @@
 import { useController } from "react-hook-form";
 import { Rating } from "react-simple-star-rating";
 import _ from "lodash";
+import Skeleton from "react-loading-skeleton";
 
 // Mui
 import Grid from "@mui/material/Grid";
@@ -11,6 +12,7 @@ export default function RatingStar({
   control,
   ratingValue,
   handleRatingChange,
+  loading,
 }) {
   const {
     fieldState: { error },
@@ -22,7 +24,9 @@ export default function RatingStar({
     },
   });
 
-  return (
+  return loading ? (
+    <Skeleton height={51} />
+  ) : (
     <Grid container>
       <Grid item xs={12}>
         <Typography variant="body1" color={error && "error"}>

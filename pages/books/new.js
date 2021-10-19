@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import { Rating } from "react-simple-star-rating";
 
 // Mui
 import { default as MuiContainer } from "@mui/material/Container";
@@ -10,7 +9,12 @@ import Grid from "@mui/material/Grid";
 // Components
 import { Button, Container, Input, RatingStar } from "../../components";
 
+// Hooks
+import useCeramic from "../../hooks/useCeramic";
+
 export default function New() {
+  const { loading, ceramic, errorMessage } = useCeramic();
+
   const { control, handleSubmit, watch, setValue, clearErrors } = useForm({
     defaultValues: {
       title: "",
@@ -36,7 +40,7 @@ export default function New() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid component={Paper} elevation={10} container sx={{ padding: 2 }}>
             <Grid item xs={12}>
-              <Input name="title" control={control} />
+              <Input name="title" control={control} loading={loading} />
             </Grid>
             <Grid item xs={12} mt={2}>
               <RatingStar
@@ -44,14 +48,29 @@ export default function New() {
                 control={control}
                 ratingValue={ratingValue}
                 handleRatingChange={handleRatingChange}
+                loading={loading}
               />
             </Grid>
             <Grid item xs={12} mt={2}>
-              <Input name="review" control={control} multiline={true} />
+              <Input
+                name="review"
+                control={control}
+                multiline={true}
+                loading={loading}
+              />
             </Grid>
             <Grid item xs={12} mt={3}>
-              <Button type="submit">+ Add Book</Button>
+              <Button type="submit" disabled={loading}>
+                + Add Book
+              </Button>
             </Grid>
+            {errorMessage && (
+              <Grid item xs={12} mt={2}>
+                <Typography variant="caption" color="error">
+                  Error: {errorMessage}
+                </Typography>
+              </Grid>
+            )}
           </Grid>
         </form>
       </MuiContainer>

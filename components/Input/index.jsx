@@ -1,11 +1,12 @@
 import { useController } from "react-hook-form";
 import _ from "lodash";
+import Skeleton from "react-loading-skeleton";
 
 // Mui
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
-function Input({ name, control, multiline, required }) {
+function Input({ name, control, loading, multiline, required }) {
   const {
     field: { ref, ...inputProps },
     fieldState: { error },
@@ -18,7 +19,9 @@ function Input({ name, control, multiline, required }) {
     },
   });
 
-  return (
+  return loading ? (
+    <Skeleton height={multiline ? 167 : 52} />
+  ) : (
     <>
       <TextField
         {...inputProps}
