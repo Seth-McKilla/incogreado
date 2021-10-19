@@ -58,8 +58,8 @@ export default function NavBar() {
             <IconButton>
               <Image
                 src={MetaMaskIcon}
-                width={35}
-                height={35}
+                width={30}
+                height={30}
                 alt="MetaMask Icon"
               />
             </IconButton>
