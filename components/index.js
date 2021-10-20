@@ -5,3 +5,4 @@ export { default as NavBar } from "./Navbar";
 export { default as Footer } from "./Footer";
 export { default as Logo } from "./Logo";
 export { default as RatingStar } from "./RatingStar";
+export { default as DialogAlert } from "./DialogAlert";

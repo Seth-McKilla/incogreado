@@ -25,11 +25,13 @@ export default function NavBar() {
 
     try {
       const ceramicClient = await ceramic();
-      return dispatch({ type: "CERAMIC_SUCCESS", payload: ceramicClient });
+      dispatch({ type: "CERAMIC_SUCCESS", payload: ceramicClient });
     } catch (error) {
       console.error(error);
-      return dispatch({ type: "CERAMIC_FAIL", payload: error });
+      dispatch({ type: "CERAMIC_FAIL", payload: error });
     }
+
+    return dispatch({ type: "CERAMIC_RESET" });
   };
 
   return (

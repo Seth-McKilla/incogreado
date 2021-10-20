@@ -1,4 +1,4 @@
-import { CeramicClient } from "@ceramicnetwork/http-client";
+import CeramicClient from "@ceramicnetwork/http-client";
 import { DataModel } from "@glazed/datamodel";
 import { DIDDataStore } from "@glazed/did-datastore";
 import KeyDidResolver from "key-did-resolver";
@@ -16,7 +16,7 @@ export default async function ceramic() {
   });
   const ceramicClient = new CeramicClient(API_URL);
   const resolver = {
-    ...KeyDidResolver.getResolver(ceramicClient),
+    ...KeyDidResolver.getResolver(),
     ...ThreeIdResolver.getResolver(ceramicClient),
   };
   const did = new DID({ resolver });

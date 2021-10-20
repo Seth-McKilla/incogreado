@@ -1,7 +1,12 @@
 import { createContext, useReducer } from "react";
 import { ceramicReducer } from "./reducers/ceramicReducer";
 
-const initialState = { loading: false, ceramic: null, error: null };
+const initialState = {
+  loading: false,
+  ceramic: null,
+  created: false,
+  error: null,
+};
 
 const Context = createContext({});
 
