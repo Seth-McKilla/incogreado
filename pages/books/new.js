@@ -60,8 +60,6 @@ export default function New() {
     return router.push("/books");
   };
 
-  console.log(ceramic);
-
   return (
     <>
       <DialogAlert

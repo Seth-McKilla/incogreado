@@ -1,7 +1,6 @@
 import CeramicClient from "@ceramicnetwork/http-client";
 import { DataModel } from "@glazed/datamodel";
 import { DIDDataStore } from "@glazed/did-datastore";
-import KeyDidResolver from "key-did-resolver";
 import ThreeIdResolver from "@ceramicnetwork/3id-did-resolver";
 import { ThreeIdConnect, EthereumAuthProvider } from "@3id/connect";
 import { DID } from "dids";
@@ -15,10 +14,7 @@ export default async function ceramic() {
     method: "eth_requestAccounts",
   });
   const ceramicClient = new CeramicClient(API_URL);
-  const resolver = {
-    ...KeyDidResolver.getResolver(),
-    ...ThreeIdResolver.getResolver(ceramicClient),
-  };
+  const resolver = ThreeIdResolver.getResolver(ceramicClient);
   const did = new DID({ resolver });
   ceramicClient.did = did;
 
