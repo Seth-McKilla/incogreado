@@ -16,7 +16,7 @@ export default function Books() {
   } = useContext(Context);
 
   useEffect(() => {
-    if (ceramic.store) {
+    if (ceramic && ceramic.store) {
       (async () => {
         try {
           const booksList = await ceramic.store.get();
@@ -26,7 +26,7 @@ export default function Books() {
         }
       })();
     }
-  }, [ceramic.store]);
+  }, [ceramic]);
 
   return (
     <Container>
