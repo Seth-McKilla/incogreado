@@ -24,13 +24,13 @@ export default function Home() {
         <Grid item xs={12} align="center">
           <Typography variant="h2">Welcome to incog-read-o!</Typography>
           <Typography variant="h4">
-            The decentralized library of book reviews.
+            Your decentralized library of book reviews.
           </Typography>
         </Grid>
 
         <Grid item xs={12} align="center" mt={4}>
           <Link href="/books" passHref>
-            <Button>Browse books</Button>
+            <Button>My books</Button>
           </Link>
         </Grid>
       </Container>

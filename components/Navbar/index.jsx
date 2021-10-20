@@ -49,12 +49,12 @@ export default function NavBar() {
             </Link>
           </Box>
           <Link href="/books" passHref>
-            <Button color="inherit">All Books</Button>
+            <Button color="inherit">My Books</Button>
           </Link>
           <Link href="/books/new" passHref>
             <Button color="inherit">+ Add Book</Button>
           </Link>
-          {state.ceramic && state.ceramic.did.authenticated ? (
+          {state.ceramic ? (
             <IconButton>
               <Image
                 src={MetaMaskIcon}

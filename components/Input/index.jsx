@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
-function Input({ name, control, loading, multiline, required }) {
+function Input({ name, control, maxLength, loading, multiline, required }) {
   const {
     field: { ref, ...inputProps },
     fieldState: { error },
@@ -15,7 +15,7 @@ function Input({ name, control, loading, multiline, required }) {
     control,
     rules: {
       required,
-      maxLength: 500,
+      maxLength,
     },
   });
 
@@ -45,6 +45,7 @@ function Input({ name, control, loading, multiline, required }) {
 }
 
 Input.defaultProps = {
+  maxLength: 100,
   multiline: false,
   required: true,
 };

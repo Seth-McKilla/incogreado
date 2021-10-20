@@ -19,6 +19,7 @@ export default function New() {
   const { control, handleSubmit, watch, setValue, clearErrors } = useForm({
     defaultValues: {
       title: "",
+      author: "",
       rating: null,
       review: "",
     },
@@ -45,6 +46,9 @@ export default function New() {
               <Input name="title" control={control} loading={loading} />
             </Grid>
             <Grid item xs={12} mt={2}>
+              <Input name="author" control={control} loading={loading} />
+            </Grid>
+            <Grid item xs={12} mt={2}>
               <RatingStar
                 name="rating"
                 control={control}
@@ -57,6 +61,7 @@ export default function New() {
               <Input
                 name="review"
                 control={control}
+                maxLength={500}
                 multiline={true}
                 loading={loading}
               />
