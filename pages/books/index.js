@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../../context";
 
 // Mui
@@ -9,13 +9,24 @@ import Grid from "@mui/material/Grid";
 import { Container, BookCard } from "../../components";
 
 export default function Books() {
+  const [booksList, setBooksList] = useState([]);
+
   const {
     state: { loading, ceramic, created, error },
   } = useContext(Context);
 
   useEffect(() => {
-    ceramic.store.get();
-  }, []);
+    if (ceramic.store) {
+      (async () => {
+        try {
+          const booksList = await ceramic.store.get();
+          return setBooksList(booksList);
+        } catch (error) {
+          console.log(error);
+        }
+      })();
+    }
+  }, [ceramic.store]);
 
   return (
     <Container>
