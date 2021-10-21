@@ -27,7 +27,7 @@ export default async function ceramic() {
   await ceramicClient.did.authenticate();
 
   const model = new DataModel({ ceramicClient, model: modelAliases });
-  const store = new DIDDataStore({ ceramicClient, model });
+  const dataStore = new DIDDataStore({ ceramicClient, model });
 
-  return { ceramicClient, model, store };
+  return { ceramicClient, model, dataStore };
 }

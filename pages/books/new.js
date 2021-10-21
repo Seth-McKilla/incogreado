@@ -47,7 +47,9 @@ export default function New() {
     dispatch({ type: "CERAMIC_REQUEST" });
 
     try {
-      await ceramic.model.createTile("ReadingList", { items: [{ ...data }] });
+      await ceramic.model.createTile("ReadingList", {
+        readingList: [{ ...data }],
+      });
       dispatch({ type: "CERAMIC_CREATED" });
     } catch (error) {
       console.error(error);

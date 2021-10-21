@@ -22,7 +22,7 @@ export default function Books() {
           const booksList = await ceramic.store.get();
           return setBooksList(booksList);
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       })();
     }
