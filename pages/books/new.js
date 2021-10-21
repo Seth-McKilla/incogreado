@@ -24,7 +24,7 @@ export default function New() {
   const router = useRouter();
 
   const {
-    state: { loading, ceramic, created, error },
+    state: { loading, keyDID, created, error },
     dispatch,
   } = useContext(Context);
 
@@ -47,10 +47,22 @@ export default function New() {
     dispatch({ type: "CERAMIC_REQUEST" });
 
     try {
-      await ceramic.model.createTile("ReadingList", {
-        readingList: [{ ...data }],
+      if (!keyDID)
+        throw new Error(
+          "Not authenticated! Please authenticate with the 'CONNECT' button in the top right corner of this page before continuing."
+        );
+
+      const response = await fetch("/api/books", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ data }),
       });
-      dispatch({ type: "CERAMIC_CREATED" });
+      const newReview = await response.json();
+
+      dispatch({ type: "REVIEW_CREATE_SUCCESS", payload: newReview });
     } catch (error) {
       console.error(error);
       dispatch({ type: "CERAMIC_FAIL", payload: error });
@@ -65,10 +77,10 @@ export default function New() {
   return (
     <>
       <DialogAlert
-        open={created}
+        open={!!created}
         onClose={handleClose}
         title="Success!"
-        message="Your book review has been successfully uploaded to your DID!"
+        message={`Your book review has been successfully submitted and associated with your DID!`}
       />
 
       <Container>

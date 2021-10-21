@@ -3,8 +3,9 @@ import { ceramicReducer } from "./reducers/ceramicReducer";
 
 const initialState = {
   loading: false,
-  ceramic: null,
+  keyDID: null,
   created: false,
+  reviewsList: [],
   error: null,
 };
 

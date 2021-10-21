@@ -13,6 +13,17 @@ export default function MyApp({ Component, pageProps }) {
     }
   }, []);
 
+  useEffect(() => {
+    (async function () {
+      try {
+        await fetch("/api/ceramic/connect");
+        return console.log("Successfully connected to the Ceramic network!");
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
+
   return (
     <Provider>
       <ThemeProvider theme={theme}>

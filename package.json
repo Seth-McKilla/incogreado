@@ -9,8 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@3id/connect": "^0.2.5",
-    "@ceramicnetwork/3id-did-resolver": "^1.4.4",
     "@ceramicnetwork/http-client": "^1.4.0",
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
@@ -19,6 +17,7 @@
     "@mui/icons-material": "^5.0.4",
     "@mui/material": "^5.0.4",
     "dids": "^2.4.0",
+    "key-did-provider-ed25519": "^1.1.0",
     "key-did-resolver": "^1.4.0",
     "lodash": "^4.17.21",
     "next": "11.1.2",

@@ -1,0 +1,11 @@
+{
+  "definitions": {
+    "bookReview": "kjzl6cwe1jw147qkffe68vzs3lcmu1r8r22gt6gc8rzle8ee4zxugr6ih89vj6v"
+  },
+  "schemas": {
+    "BookReview": "ceramic://k3y52l7qbv1fryl50kpwxiywn5xocjg66a4fh7zm0wk9ob5evbiu43g5gqp0j13pc"
+  },
+  "tiles": {
+    "exampleBookReview": "kjzl6cwe1jw149h0t3b16nq27i3u7w5p0kktqejqo2algpf978x0akk4wuypkng"
+  }
+}

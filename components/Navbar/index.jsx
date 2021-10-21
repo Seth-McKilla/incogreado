@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { Context } from "../../context";
-import ceramic from "../../ceramic";
 
 // Next
 import Link from "next/link";
@@ -12,10 +11,11 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
 
 // Assets
 import LogoInverted from "../../public/logo-inverted.png";
-import MetaMaskIcon from "../../public/metamask.svg";
+import CeramicLogo from "../../public/ceramic-logo.png";
 
 export default function NavBar() {
   const { state, dispatch } = useContext(Context);
@@ -24,8 +24,9 @@ export default function NavBar() {
     dispatch({ type: "CERAMIC_REQUEST" });
 
     try {
-      const ceramicClient = await ceramic();
-      dispatch({ type: "CERAMIC_SUCCESS", payload: ceramicClient });
+      const response = await fetch("/api/ceramic/authenticate");
+      const keyDID = await response.json();
+      dispatch({ type: "CONNECT_SUCCESS", payload: keyDID });
     } catch (error) {
       console.error(error);
       dispatch({ type: "CERAMIC_FAIL", payload: error });
@@ -56,18 +57,20 @@ export default function NavBar() {
           <Link href="/books/new" passHref>
             <Button color="inherit">+ Add Book</Button>
           </Link>
-          {state.ceramic ? (
-            <IconButton>
-              <Image
-                src={MetaMaskIcon}
-                width={30}
-                height={30}
-                alt="MetaMask Icon"
-              />
-            </IconButton>
+          {state.keyDID ? (
+            <Tooltip title={state.keyDID}>
+              <IconButton>
+                <Image
+                  src={CeramicLogo}
+                  width={30}
+                  height={30}
+                  alt="Ceramic Logo"
+                />
+              </IconButton>
+            </Tooltip>
           ) : (
             <Button color="inherit" onClick={handleConnect}>
-              Connect
+              Authenticate
             </Button>
           )}
         </Toolbar>
