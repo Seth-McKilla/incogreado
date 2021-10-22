@@ -23,10 +23,10 @@ export default function Books() {
         </Grid>
 
         {reviewsList.length !== 0 &&
-          reviewsList.map((reviewItem) => {
+          reviewsList.map((reviewItem, index) => {
             const { title, author, rating, review } = reviewItem;
             return (
-              <Grid item xs={4}>
+              <Grid key={`${index}-${reviewItem}`} item xs={4}>
                 <BookCard
                   title={title}
                   author={author}
