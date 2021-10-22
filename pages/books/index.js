@@ -22,7 +22,16 @@ export default function Books() {
           </Typography>
         </Grid>
 
-        {reviewsList.length !== 0 &&
+        {reviewsList.length === 0 ? (
+          <Grid item xs={12}>
+            <Typography variant="h4">No books yet...</Typography>
+            <Typography variant="h6">
+              {
+                "Add some now by navigating to the '+ADD BOOK' button on the tip right of this page"
+              }
+            </Typography>
+          </Grid>
+        ) : (
           reviewsList.map((reviewItem, index) => {
             const { title, author, rating, review } = reviewItem;
             return (
@@ -35,7 +44,8 @@ export default function Books() {
                 />
               </Grid>
             );
-          })}
+          })
+        )}
       </Grid>
     </Container>
   );
